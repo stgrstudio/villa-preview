@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en" data-type="place" data-radius="round" data-buttons="pill" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Sawerna: boutique villas in Canggu, Bali</title>
+<meta name="description" content="A garden villa and two private pool villas in Canggu. Book direct on WhatsApp for a lower rate than the platforms, with breakfast and airport pick-up.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sawerna: boutique villas in Canggu, Bali">
+<meta property="og:description" content="A garden villa and two pool villas in Canggu, cheaper when you book direct.">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f5f0e7">
+<!-- <link rel="canonical" href="https://[the client's domain]/"> : no domain yet (a concept) -->
+<meta name="site-kind" content="other">
+<meta name="page-type" content="place">
+<meta name="page-kind" content="place">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,600,100&text=Sawerna&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #f5f0e7; --p-surface: #c9d0b8; --p-ink: #2e2118; --p-muted: #5c5047;
+  --p-accent: #3d2a1e; --p-accent-ink: #f5f0e7; --p-action: #3d2a1e; --p-action-ink: #f5f0e7;
+  --p-inv-bg: #2e2118; --p-inv-surface: #3a2d24; --p-inv-ink: #f5f0e7; --p-inv-muted: #a39a91;
+  --p-inv-accent: #f5f0e7; --p-inv-accent-ink: #2e2118; --p-inv-action: #f5f0e7; --p-inv-action-ink: #2e2118;
+  --font-display: "Instrument Sans", system-ui, sans-serif;
+  --font-text: "Instrument Sans", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.02em;
+}
+  /* the client's logo: the gate mark and the wordmark in its own soft serif and terracotta */
+  :root { --logo: #b0491f; --font-logo: "Fraunces", ui-serif, Georgia, serif; }
+  .nav__logo { display: inline-flex; align-items: center; gap: var(--s-2); color: var(--logo); }
+  .nav__mark { display: block; width: 34px; height: auto; flex: none; }
+  .nav__word { font: 600 24px/1 var(--font-logo); font-variation-settings: "SOFT" 100; letter-spacing: -0.01em; }
+  .close--word > .close__word { font-family: var(--font-logo); font-weight: 600; font-variation-settings: "SOFT" 100; letter-spacing: -0.01em; }
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/picture-develops/moment.js">
+<!-- page CSS: the client's reference asks for soft rounded photographs and pill buttons (waived from the place's
+     square corners, plan line 2); the hero's frame and its booking bar; the rates groups; the detail strip -->
+<style>
+  :root[data-type="place"] { --r-sm: 10px; --r-md: 16px; --r-lg: 24px; --r-btn: 999px; }
+  .hero--villa { --hgap: 48px; }
+  .hero--villa > .wrap > .hero-text { display: flex; flex-direction: column; gap: var(--s-6); height: 100%; }
+  .hv-head { align-items: start; row-gap: var(--s-4); }
+  .hv-head > h1 { margin: 0; text-box: trim-start cap alphabetic; }
+  .hv-head > .hero__lead { margin: 0; font-size: var(--t-lead); line-height: 1.5; max-width: none; text-align: justify; text-align-last: left; }
+  .hv-bar .field, .hv-bar :is(input, select) { min-width: 0; }
+  .hv-stage { position: relative; flex: 1 1 0; min-height: 0; }
+  .hv-media { position: absolute; inset: 0; margin: 0; border-radius: var(--r-lg); overflow: hidden; background: var(--surface); }
+  .hv-media > img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 60%; }
+  .hv-bar { position: absolute; left: var(--s-5); right: var(--s-5); bottom: var(--s-5); z-index: 2;
+            grid-template-columns: repeat(4, minmax(0, 1fr)) auto; align-items: end; gap: var(--s-4);
+            padding: var(--s-4) var(--s-4) var(--s-4) var(--s-5); background: var(--bg); border-radius: var(--r-lg); }
+  .hv-bar > .btn-row { grid-column: auto; margin: 0; }
+  .hv-bar > .form__status { grid-column: 1 / -1; margin: 0; }
+  .hv-bar > .form__status:empty { display: none; }
+  @media (max-width: 1023px) {
+    .hv-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hv-bar > .btn-row { grid-column: 1 / -1; }
+    .hv-bar > .btn-row > .btn { width: 100%; }
+  }
+  @media (max-width: 639px) {
+    .hero--villa { --hgap: 40px; }
+    .hero--villa > .wrap > .hero-text { height: auto; min-height: 100%; }
+    .hv-stage { display: flex; flex-direction: column; gap: var(--s-4); flex: 1 0 auto; }
+    .hv-media { position: relative; inset: auto; flex: 1 0 auto; min-height: 220px; }
+    .hv-media > img { position: absolute; inset: 0; }
+    .hv-bar { position: static; padding: 0; background: none; border-radius: 0; gap: var(--s-3); }
+  }
+  /* rates: one ruled table (villa, direct, platform, saving), then the strip of four details */
+  .cmp__row { padding-block: var(--s-4); border-bottom: 1px solid var(--line); align-items: baseline; font-variant-numeric: tabular-nums; }
+  .cmp__row:last-child { border-bottom: 0; }
+  .cmp__head { padding-top: 0; font-size: var(--t-label); font-weight: 500; border-bottom: 0; }
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .cmp__row > .span-4 { grid-column: span 4; } .cmp__row > .span-3 { grid-column: span 3; } .cmp__row > .span-2 { grid-column: span 2; }
+    #rooms .tile { --tile-ratio: 3 / 4; }
+    #faq { --h: 2; } #faq .pl-photo { margin-top: var(--s-7); } #faq .pl-photo > img { width: 100%; height: auto; }
+  }
+  @media (min-width: 640px) and (max-width: 1023px) {
+  }
+  .cmp__row > :first-child, .cmp__direct { font-weight: 500; }
+  .strip > a { display: block; overflow: hidden; border-radius: var(--r-lg); }
+  .strip img { display: block; width: 100%; aspect-ratio: 1; height: auto; object-fit: cover; }
+  .strip { margin-top: var(--s-7); }
+  @media (min-width: 640px) and (max-width: 1023px) { .strip > a { grid-column: auto / span 3; } }
+  @media (max-width: 639px) {
+    .cmp__row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--s-1); }
+    .cmp__row > * { grid-column: auto; }
+    .cmp__row > :first-child { grid-column: 1 / -1; }
+    .cmp__head > :first-child { display: none; }
+    .cmp__row > .cmp__save { display: none; }
+    .strip > a { grid-column: auto / span 6; } .strip > a:nth-child(n+3) { display: none; }
+  }
+  /* rooms: the head as the first cell, three rooms on span-3, square photographs (4:3 on a phone) */
+  #rooms .tile { --tile-ratio: 4 / 5; }
+  #rooms > .wrap > .section-head, #rooms > .wrap > .tile { align-self: stretch; } #rooms > .wrap > .section-head { margin: 0; }
+  .room-link { display: inline-flex; align-items: center; gap: var(--s-2); font-weight: 500; }
+  .tile .tile__price { font-variant-numeric: tabular-nums; }
+  @media (min-width: 640px) and (max-width: 1023px) { #rooms > .wrap > .tile { grid-column: auto / span 4; } }
+  @media (max-width: 639px) {
+    #rooms .tile { --tile-ratio: 4 / 3; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gutter); row-gap: var(--s-1); align-content: start; }
+    #rooms > .wrap > .tile { grid-column: 1 / -1; }
+    #rooms .tile > .tile__media { grid-column: 1; grid-row: 1 / span 5; align-self: start; }
+    #rooms .tile > :not(.tile__media) { grid-column: 2; margin: 0; }
+    #rooms .tile > p:not([class]) { display: none; }
+  }
+  @media (max-width: 639px) {
+    #visit .hours { grid-template-columns: minmax(0, 1fr) auto; }
+    #visit .hours dd { text-align: right; }
+    #visit .visit__cols > *, #visit .visit__cols .hours { margin-top: 0; }
+    #visit .pl-photo { --pl-r: 2.4; }
+    #visit .visit { gap: var(--s-3); }
+    #visit .visit__address br { display: none; }
+    #visit .visit__col.stack-4 { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--s-2) var(--s-4); }
+    #visit .visit__col.stack-4 > * { margin: 0; }
+    .cmp__row { padding-block: var(--s-3); }
+    .strip { margin-top: var(--s-6); } .strip img { aspect-ratio: 4 / 3; }
+    #visit .visit__rows > li { flex-direction: row; align-items: center; justify-content: space-between; }
+    #visit .visit__rows > li > :last-child { text-align: right; }
+  }
+  @media (min-width: 640px) and (max-width: 1023px) { .strip { margin-top: var(--s-8); } .strip img { aspect-ratio: 2 / 3; } #visit .pl-photo > img { aspect-ratio: 4 / 3; } #faq .pl-photo > img { aspect-ratio: 4 / 5; } }
+  /* a tall tablet (820x1180): taller pictures, so each screen is as full as on the others */
+  @media (min-width: 640px) and (max-width: 1023px) and (min-height: 1100px) {
+    #visit .pl-photo > img { aspect-ratio: 6 / 5; }
+    #rooms .tile { --tile-ratio: 2 / 3; }
+    .strip img { aspect-ratio: 1 / 2; }
+  }
+  /* the booking bar's live summary: nights, the direct total and what it saves, once both dates are in */
+  .hv-bar > .hv-sum { grid-column: 1 / -1; margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-1) var(--s-4); padding-top: var(--s-3); border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+  .hv-sum__total { font-weight: 500; }
+  .hv-sum__save { font-weight: 500; }
+  .hv-sum > span { transition: opacity 220ms var(--ease), transform 220ms var(--ease); }
+  .hv-sum.is-swap > span { opacity: 0; transform: translateY(4px); }
+
+  /* the stay calculator under the rates table */
+  .calc { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-5) var(--s-7); align-items: end; margin-top: var(--s-7); padding: var(--s-6); background: color-mix(in oklab, var(--bg), white 45%); border-radius: var(--r-lg); }
+  .calc__ctrl { display: grid; gap: var(--s-5); }
+  .calc__villa { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: 0; padding: 0; border: 0; }
+  .calc__villa legend { width: 100%; margin-bottom: var(--s-2); padding: 0; font-size: var(--t-label); font-weight: 500; }
+  .calc__villa input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .calc__villa label { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s-4); border: 1px solid var(--line); border-radius: var(--r-btn); cursor: pointer; transition: background-color 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease); }
+  .calc__villa label:hover { border-color: var(--ink); }
+  .calc__villa input:checked + label { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .calc__villa input:focus-visible + label { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .calc__nights { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: var(--s-2) var(--s-4); }
+  .calc__nights label { font-size: var(--t-label); font-weight: 500; }
+  .calc__nights output { font-variant-numeric: tabular-nums; font-weight: 500; }
+  .calc__nights input { grid-column: 1 / -1; width: 100%; height: 44px; margin: 0; accent-color: var(--ink); cursor: pointer; }
+  .calc__out { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); margin: 0; }
+  .calc__out > div { display: grid; gap: var(--s-1); padding-top: var(--s-3); border-top: 1px solid var(--line); }
+  .calc__out dt { font-size: var(--t-label); }
+  .calc__out dd { margin: 0; overflow: hidden; font-size: var(--t-lead); font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .calc__out dd > span { display: inline-block; transition: opacity 200ms var(--ease), transform 200ms var(--ease); }
+  .calc__out.is-swap dd > span { opacity: 0; transform: translateY(40%); }
+  .calc__out > .calc__keep { border-top-color: var(--ink); }
+  @media (max-width: 1023px) { .calc { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 639px) {
+    .calc { padding: var(--s-5); margin-top: var(--s-6); }
+    .calc__out { grid-template-columns: minmax(0, 1fr); gap: var(--s-2); }
+    .calc__out > div { grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; }
+    .calc__out dd { font-size: 16px; }
+  }
+
+  /* the phone action bar carries the starting price beside its one action */
+  @media (max-width: 639px) {
+    .actionbar { grid-auto-flow: row; grid-template-columns: minmax(0, 1fr) auto; }
+    .actionbar .btn { width: auto; padding-inline: var(--s-5); }
+    .actionbar__price { margin: 0; display: grid; line-height: 1.25; font-size: var(--t-label); }
+    .actionbar__price strong { font-size: 16px; font-weight: 500; font-variant-numeric: tabular-nums; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hv-sum > span, .calc__out dd > span, .calc__villa label { transition: none; }
+  }
+
+  /* the name across the close, sized to the 1200 column */
+  .close--word > .close__word { font-size: clamp(56px, 12vw, 170px); line-height: 1; padding-top: .04em; }
+  @media (max-width: 639px) { .close--word > .close__word { font-size: 48px; } }
+</style>
+</head>
+<body>
+<!-- type: place (a boutique villa / guesthouse in Canggu, Bali; fictional, a stgr studio concept)
+     deal: hero place (the reference's version: words above, one rounded photograph, the booking bar on its foot),
+     nav nav-cards, footer footer-visit, rhythm surface-pairs (the rates on the sage band), buttons pill (reference;
+     dealt block), mark petal, the offer strip, the place wall (not used: compact page), type moment name
+     (close-word), rooms side; palette from the client's reference through start.mjs brand (cream, chocolate, sage),
+     type instrument-sans, radius round (reference; a place is square by default)
+     moments: picture-develops on the Canggu photograph in #visit (the coast arrives as the district is named) -->
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo" href="#top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" class="nav__mark" width="34" height="28" fill="currentColor" aria-hidden="true" focusable="false"><defs><mask id="sawerna-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="100"><rect width="120" height="100" fill="#fff"/><path d="M47 89V57a13 13 0 0 1 26 0v32z" fill="#000"/><g transform="translate(60 24)" fill="#000"><ellipse cx="0" cy="-6.2" rx="3.6" ry="6.2"/><ellipse cx="0" cy="-6.2" rx="3.6" ry="6.2" transform="rotate(72)"/><ellipse cx="0" cy="-6.2" rx="3.6" ry="6.2" transform="rotate(144)"/><ellipse cx="0" cy="-6.2" rx="3.6" ry="6.2" transform="rotate(216)"/><ellipse cx="0" cy="-6.2" rx="3.6" ry="6.2" transform="rotate(288)"/></g><path d="M31 44c-5-1-7-7-2-8 3 0 5 2 8 5zM89 44c5-1 7-7 2-8-3 0-5 2-8 5z" fill="#000"/></mask></defs><g mask="url(#sawerna-cut)"><circle cx="60" cy="24" r="15.5"/><circle cx="46.5" cy="34" r="8.5"/><circle cx="73.5" cy="34" r="8.5"/><path d="M23 44c0-8 8-12 14-8l7 4v8H27c-3 0-4-2-4-4zM97 44c0-8-8-12-14-8l-7 4v8h16c3 0 4-2 4-4z"/><rect x="36" y="37" width="48" height="52" rx="3"/><rect x="23" y="62" width="19" height="27" rx="2"/><rect x="78" y="62" width="19" height="27" rx="2"/><rect x="13" y="78" width="94" height="11" rx="2.5"/></g><rect x="49" y="81" width="22" height="3.5" rx="1.75"/><rect x="43" y="88" width="34" height="4" rx="2"/><rect x="38" y="94.5" width="44" height="4" rx="2"/></svg><span class="nav__word">Sawerna</span></a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item">
+        <a class="nav__link" href="#rooms">Villas <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu">
+          <div class="wrap grid">
+            <a class="menu-card span-4" href="#rooms">
+              <div class="panel"><img class="frame__img" src="assets/img/pexels/pexels-1103808.jpg" alt="Garden Villa: a bedroom looking out over a green garden" width="1600" height="2133" data-source="pexels" data-subject="room"></div>
+              <span class="t-card">Garden Villa</span>
+              <span class="t-small muted">From IDR 2,380,000 a night</span>
+            </a>
+            <a class="menu-card span-4" href="#rooms">
+              <div class="panel"><img class="frame__img" src="assets/img/pexels/pexels-36418268.jpg" alt="Pool Villa: a private pool surrounded by tropical planting" width="1600" height="1067" data-source="pexels" data-subject="room"></div>
+              <span class="t-card">Pool Villa</span>
+              <span class="t-small muted">From IDR 3,960,000 a night</span>
+            </a>
+            <a class="menu-card span-4" href="#rooms">
+              <div class="panel"><img class="frame__img" src="assets/img/pexels/pexels-28256945.jpg" alt="Two-Bedroom Villa: a living room under a timber ceiling" width="1600" height="2400" data-source="pexels" data-subject="room"></div>
+              <span class="t-card">Two-Bedroom Villa</span>
+              <span class="t-small muted">From IDR 6,240,000 a night</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="nav__item"><a class="nav__link" href="#rates">Rates</a></div>
+      <div class="nav__item"><a class="nav__link" href="#visit">Location</a></div>
+      <div class="nav__item"><a class="nav__link" href="#faq">Questions</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="#book">Book direct</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero hero--villa" data-enter aria-labelledby="hero-h">
+    <div class="wrap">
+      <div class="hero-text">
+        <div class="hv-head grid">
+          <h1 id="hero-h" class="span-6">Boutique villas in Canggu, Bali</h1>
+          <p class="hero__lead span-6 start-7">Three private villas a short walk from the beach, from <span data-assumed>IDR 2,380,000</span> a night with breakfast.</p>
+        </div>
+        <div class="hv-stage">
+          <figure class="hv-media" data-enter-media>
+            <img src="assets/img/pexels/pexels-5649731.jpg" srcset="assets/img/pexels/pexels-5649731.jpg 1600w" sizes="(max-width: 639px) 188vw, (max-width: 1023px) 160vw, 100vw" width="1600" height="1067" alt="A villa bedroom with a timber floor, white linen and a wide window" fetchpriority="high" decoding="async" data-source="pexels" data-subject="room">
+          </figure>
+          <!-- the booking bar: the main action. It hands off to WhatsApp with the dates and guests written into the
+               message (the hidden text field, kept up to date by the script at the foot); without script the message
+               still opens with a plain greeting. wa.me/6281200000000 is the brief's stand-in number. -->
+          <form class="form hv-bar" id="book" action="https://wa.me/6281200000000" method="get" target="_blank" data-endpoint="" aria-label="Check dates and book direct on WhatsApp" novalidate>
+            <div class="field"><label for="b-in">Check-in</label>
+              <input id="b-in" type="date" required aria-describedby="b-in-err">
+              <p class="field__error" id="b-in-err" hidden>Pick the day you arrive.</p></div>
+            <div class="field"><label for="b-out">Check-out</label>
+              <input id="b-out" type="date" required aria-describedby="b-out-err">
+              <p class="field__error" id="b-out-err" hidden>Pick a day after check-in.</p></div>
+            <div class="field"><label for="b-guests">Guests</label>
+              <select id="b-guests"><option>1 guest</option><option selected>2 guests</option><option>3 guests</option><option>4 guests</option></select></div>
+            <div class="field"><label for="b-villa">Villa</label>
+              <select id="b-villa"><option>Any villa</option><option>Garden Villa</option><option>Pool Villa</option><option>Two-Bedroom Villa</option></select></div>
+            <input type="hidden" name="text" value="Hello Sawerna, I would like to book direct.">
+            <div class="btn-row"><button class="btn btn--primary" type="submit">Book direct<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></button></div>
+            <p class="hv-sum" id="b-sum" aria-live="polite" data-assumed hidden><span data-sum="stay"></span><span class="hv-sum__total" data-sum="total"></span><span class="hv-sum__save" data-sum="save"></span></p>
+            <p class="form__status" role="status" data-form-status></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="visit" data-place="visit" aria-labelledby="visit-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="visit-h">Location and arrival</h2></div>
+      <div class="grid grid--top">
+        <div class="visit visit--card span-6">
+          <div class="visit__cols">
+            <div class="visit__col stack-4">
+              <address class="visit__address">Canggu,<br> Badung, Bali</address>
+              <a class="link" href="https://www.openstreetmap.org/search?query=Canggu%20Bali">See the area</a>
+            </div>
+            <div class="visit__col">
+              <dl class="hours" data-assumed><dt>Check-in</dt><dd>From 14:00</dd><dt>Check-out</dt><dd>By 11:00</dd></dl>
+            </div>
+          </div>
+          <ul class="visit__rows">
+            <li><span>From the airport</span><span data-assumed>45 to 90 minutes by car</span></li>
+            <li><span>To the beach</span><span data-assumed>A 10-minute walk</span></li>
+          </ul>
+        </div>
+        <figure class="pl-photo pl-photo--end span-6 start-7" style="--pl-r: 1; --pl-head: 72px" data-moment="picture-develops">
+          <img src="assets/img/pexels/pexels-5289209.jpg" srcset="assets/img/pexels/pexels-5289209.jpg 1600w" sizes="(max-width: 1023px) 100vw, 50vw" width="1600" height="1067" alt="Sunset on the beach at Canggu" loading="lazy" decoding="async" style="--pos: 40% 50%" data-source="pexels" data-subject="area">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="rooms" aria-labelledby="rooms-h">
+    <div class="wrap grid grid--top">
+      <div class="span-3 section-head">
+        <h2 id="rooms-h">Villas and prices</h2>
+        <p>Three ways to stay, each with breakfast, daily housekeeping and Wi-Fi. Prices are per night for the whole villa.</p>
+      </div>
+      <a class="tile span-3" href="#book" data-room="Garden Villa">
+        <div class="tile__media"><img src="assets/img/pexels/pexels-1103808.jpg" srcset="assets/img/pexels/pexels-1103808.jpg 1600w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 70vw, 40vw" width="1600" height="2133" alt="Garden Villa: a bedroom looking out over a green garden" loading="lazy" decoding="async" style="object-position: 40% 50%" data-source="pexels" data-subject="room"></div>
+        <div class="tile__head"><h3>Garden Villa</h3></div>
+        <p class="tile__facts" data-assumed>2 guests · 42 m² · garden terrace</p>
+        <p data-assumed>A bedroom and a covered terrace on the garden, with an outdoor rain shower.</p>
+        <p class="tile__price">From <span data-assumed>IDR 2,380,000</span></p>
+        <span class="room-link">Book this villa<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span>
+      </a>
+      <a class="tile span-3" href="#book" data-room="Pool Villa">
+        <div class="tile__media"><img src="assets/img/pexels/pexels-36418268.jpg" srcset="assets/img/pexels/pexels-36418268.jpg 1600w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 70vw, 40vw" width="1600" height="1067" alt="Pool Villa: a private pool surrounded by tropical planting" loading="lazy" decoding="async" data-source="pexels" data-subject="room"></div>
+        <div class="tile__head"><h3>Pool Villa</h3></div>
+        <p class="tile__facts" data-assumed>2 guests · 1 bedroom · 8 m pool</p>
+        <p data-assumed>One bedroom that opens straight onto its own pool and a shaded daybed.</p>
+        <p class="tile__price">From <span data-assumed>IDR 3,960,000</span></p>
+        <span class="room-link">Book this villa<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span>
+      </a>
+      <a class="tile span-3" href="#book" data-room="Two-Bedroom Villa">
+        <div class="tile__media"><img src="assets/img/pexels/pexels-28256945.jpg" srcset="assets/img/pexels/pexels-28256945.jpg 1600w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 70vw, 40vw" width="1600" height="2400" alt="Two-Bedroom Villa: a living room under a timber ceiling" loading="lazy" decoding="async" data-source="pexels" data-subject="room"></div>
+        <div class="tile__head"><h3>Two-Bedroom Villa</h3></div>
+        <p class="tile__facts" data-assumed>4 guests · 2 bedrooms · 10 m pool</p>
+        <p data-assumed>Two bedrooms either side of a living room, a kitchen and a pool for four.</p>
+        <p class="tile__price">From <span data-assumed>IDR 6,240,000</span></p>
+        <span class="room-link">Book this villa<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section ground-surface" id="rates" aria-labelledby="rates-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="rates-h">Direct rates and platform prices</h2>
+        <p>Airbnb and Booking.com take 15 to 20% of every booking. Book with us and that share comes back to you as a lower rate, plus airport pick-up and late check-out.</p>
+      </div>
+      <div class="cmp" role="table" aria-label="One night in each villa, in rupiah: booked direct and on a platform">
+        <div class="cmp__row cmp__head grid" role="row"><span class="span-4" role="columnheader">One night, in IDR</span><span class="span-3" role="columnheader">Booked direct</span><span class="span-3" role="columnheader">Airbnb or Booking.com</span><span class="span-2 cmp__save" role="columnheader">You save</span></div>
+        <div class="cmp__row grid" role="row"><span class="span-4" role="rowheader">Garden Villa</span><span class="span-3 cmp__direct" role="cell" data-assumed>2,380,000</span><span class="span-3" role="cell" data-assumed>2,750,000</span><span class="span-2 cmp__save" role="cell" data-assumed>370,000</span></div>
+        <div class="cmp__row grid" role="row"><span class="span-4" role="rowheader">Pool Villa</span><span class="span-3 cmp__direct" role="cell" data-assumed>3,960,000</span><span class="span-3" role="cell" data-assumed>4,580,000</span><span class="span-2 cmp__save" role="cell" data-assumed>620,000</span></div>
+        <div class="cmp__row grid" role="row"><span class="span-4" role="rowheader">Two-Bedroom Villa</span><span class="span-3 cmp__direct" role="cell" data-assumed>6,240,000</span><span class="span-3" role="cell" data-assumed>7,190,000</span><span class="span-2 cmp__save" role="cell" data-assumed>950,000</span></div>
+      </div>
+      <!-- the stay calculator: pick a villa and the nights; the three totals change in place. Rates are the table's. -->
+      <form class="calc" id="calc" aria-label="Work out what a direct stay saves" data-assumed>
+        <div class="calc__ctrl">
+          <fieldset class="calc__villa"><legend>Your villa</legend>
+            <input type="radio" name="c-villa" id="cv0" value="0" checked><label for="cv0">Garden</label>
+            <input type="radio" name="c-villa" id="cv1" value="1"><label for="cv1">Pool</label>
+            <input type="radio" name="c-villa" id="cv2" value="2"><label for="cv2">Two-Bedroom</label>
+          </fieldset>
+          <div class="calc__nights">
+            <label for="c-n">Nights</label>
+            <output id="c-n-out" for="c-n">5 nights</output>
+            <input type="range" id="c-n" min="1" max="14" step="1" value="5">
+          </div>
+        </div>
+        <dl class="calc__out" aria-live="polite">
+          <div><dt>Booked direct</dt><dd><span data-c="direct">IDR 11,900,000</span></dd></div>
+          <div><dt>Airbnb or Booking.com</dt><dd><span data-c="ota">IDR 13,750,000</span></dd></div>
+          <div class="calc__keep"><dt>You keep</dt><dd><span data-c="save">IDR 1,850,000</span></dd></div>
+        </dl>
+      </form>
+      <div class="grid strip">
+        <a class="m-zoom span-3" href="#faq" aria-label="What breakfast includes"><img src="assets/img/pexels/pexels-32719182.jpg" srcset="assets/img/pexels/pexels-32719182.jpg 1600w" sizes="(max-width: 639px) 50vw, (max-width: 1023px) 60vw, 30vw" width="1600" height="1067" alt="Breakfast by the pool with tropical fruit" loading="lazy" decoding="async" style="object-position: 50% 60%" data-source="pexels" data-subject="breakfast"></a>
+        <a class="m-zoom span-3" href="#faq" aria-label="Check-in and check-out times"><img src="assets/img/pexels/pexels-30766942.jpg" srcset="assets/img/pexels/pexels-30766942.jpg 1600w" sizes="(max-width: 639px) 50vw, (max-width: 1023px) 60vw, 30vw" width="1600" height="2397" alt="Linen cushions on a villa sofa" loading="lazy" decoding="async" style="object-position: 65% 55%" data-source="pexels" data-subject="detail"></a>
+        <a class="m-zoom span-3" href="#faq" aria-label="What a stay includes"><img src="assets/img/pexels/pexels-37526113.jpg" srcset="assets/img/pexels/pexels-37526113.jpg 1600w" sizes="(max-width: 639px) 50vw, (max-width: 1023px) 60vw, 30vw" width="1600" height="2240" alt="A canang sari offering of flowers and leaves" loading="lazy" decoding="async" style="object-position: 45% 55%" data-source="pexels" data-subject="detail"></a>
+        <a class="m-zoom span-3" href="#faq" aria-label="Questions about the garden and pool"><img src="assets/img/photo-f142424144-500.jpg" srcset="assets/img/photo-f142424144-500.jpg 500w, assets/img/photo-f142424144-960.jpg 960w" sizes="(max-width: 639px) 50vw, (max-width: 1023px) 60vw, 30vw" width="500" height="375" alt="A white and yellow frangipani flower among green leaves" loading="lazy" decoding="async" data-source="stand-in" data-subject="detail"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="--hm: 2" aria-labelledby="faq-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <h2 id="faq-h">Questions before you book</h2>
+          <p>Anything else, ask when you send your dates.</p>
+          <p><a class="link" href="https://wa.me/6281200000000?text=Hello%20Sawerna%2C%20I%20have%20a%20question%20before%20I%20book.">Ask on WhatsApp</a></p>
+        </div>
+        <div class="faq">
+          <div class="faq__item"><h3>How much is the deposit?</h3><p><span data-assumed>30%</span> holds your dates, by transfer or card link; the rest is paid on arrival.</p></div>
+          <div class="faq__item"><h3>What if I need to cancel?</h3><p>Cancelling is free up to <span data-assumed>14 days</span> before arrival; after that the deposit is kept.</p></div>
+          <div class="faq__item"><h3>When can I check in and out?</h3><p>From 14:00, out by 11:00; direct guests may stay to 14:00 when the villa is free.</p></div>
+          <div class="faq__item"><h3>Do you arrange airport transfers?</h3><p>Pick-up from Denpasar airport is free on direct stays of <span data-assumed>3 nights</span> or more.</p></div>
+          <div class="faq__item"><h3>What is included in the price?</h3><p>Breakfast, housekeeping, pool care, Wi-Fi, drinking water, tax and service.</p></div>
+        </div>
+      </div>
+      <figure class="pl-photo pl-photo--end span-6 start-7" style="--pl-r: .8"><img src="assets/img/photo-d88-960.jpg" srcset="assets/img/photo-d88-500.jpg 500w, assets/img/photo-d88-960.jpg 960w" sizes="(max-width: 1023px) 100vw, 50vw" width="960" height="1315" alt="A cream ceramic lamp on a side table, low sun casting long shadows on a white wall" loading="lazy" decoding="async" style="--pos: 50% 40%" data-source="library-057" data-subject="detail"></figure>
+    </div>
+  </section>
+</main>
+
+<footer class="footer closing footer--visit ground-brand" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--word">
+      <div class="section-head--split">
+        <div><h2 id="close-h">Book direct with Sawerna</h2><p class="t-lead">Send your dates on WhatsApp for the direct rate.</p></div>
+        <a class="btn btn--primary" href="#book">Book direct<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      </div>
+      <p class="close__word" aria-hidden="true">Sawerna</p>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-6 stack-4">
+          <address class="footer__address">Canggu, Bali</address>
+          <p><a class="link" href="https://www.openstreetmap.org/search?query=Canggu%20Bali">See the area</a></p>
+        </div>
+        <div class="span-6 start-7 stack-4">
+          <h3>Check-in and check-out</h3>
+          <dl class="hours" data-assumed><dt>Check-in</dt><dd>From 14:00</dd><dt>Check-out</dt><dd>By 11:00</dd></dl>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Sawerna. A concept site by stgr studio: the villa is fictional and every price is an example.</span>
+        <a class="credits" href="credits.html">Photographs via Pexels and Wikimedia Commons</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Quick actions">
+  <p class="actionbar__price">From <strong data-assumed>IDR 2,380,000</strong><span>a night, booked direct</span></p>
+  <a class="btn btn--primary" href="#book">Book direct</a>
+</nav>
+
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<!-- the booking bar's WhatsApp message: writes the dates, guests and villa into the hidden text field as they change,
+     keeps check-out after check-in, and pre-selects a villa when a room tile is followed. The submit itself is the
+     browser's own (system.js checks the fields first). -->
+<script>
+(() => {
+  const form = document.getElementById('book'); if (!form) return;
+  const din = form.querySelector('#b-in'), dout = form.querySelector('#b-out');
+  const guests = form.querySelector('#b-guests'), villa = form.querySelector('#b-villa'), text = form.querySelector('input[name="text"]');
+  const iso = d => d.toISOString().slice(0, 10);
+  const nice = v => v ? new Date(v + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+  din.min = iso(new Date());
+  const update = () => {
+    if (din.value) { const next = new Date(din.value + 'T12:00:00'); next.setDate(next.getDate() + 1); dout.min = iso(next); }
+    dout.setCustomValidity(din.value && dout.value && dout.value <= din.value ? 'Pick a day after check-in.' : '');
+    const which = villa.value === 'Any villa' ? 'any villa' : 'the ' + villa.value;
+    const n = nightsOf();
+    text.value = 'Hello Sawerna, I would like to book direct: ' + which +
+      (din.value ? ', ' + nice(din.value) : '') + (dout.value ? ' to ' + nice(dout.value) : '') +
+      (n ? ' (' + n + (n === 1 ? ' night' : ' nights') + ')' : '') +
+      ', ' + guests.value + '. Could you confirm the direct rate?';
+    summary(n);
+  };
+
+  // The rates, as in the table (examples): direct and platform, per night.
+  const RATES = { 'Garden Villa': [2380000, 2750000], 'Pool Villa': [3960000, 4580000], 'Two-Bedroom Villa': [6240000, 7190000] };
+  const NAMES = Object.keys(RATES);
+  const idr = v => 'IDR ' + v.toLocaleString('en-US');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const timers = new WeakMap();
+  const swap = (el, paint) => {
+    if (reduce || el.hidden) { paint(); return; }
+    clearTimeout(timers.get(el));
+    el.classList.add('is-swap');
+    timers.set(el, setTimeout(() => { paint(); el.classList.remove('is-swap'); }, 160));
+  };
+  function nightsOf() {
+    if (!din.value || !dout.value || dout.value <= din.value) return 0;
+    return Math.round((new Date(dout.value + 'T12:00:00') - new Date(din.value + 'T12:00:00')) / 864e5);
+  }
+
+  // 1. The booking bar's live summary.
+  const sum = document.getElementById('b-sum');
+  let lastSum = '';
+  function summary(n) {
+    if (!sum) return;
+    if (!n) { sum.hidden = true; lastSum = ''; return; }
+    const name = villa.value === 'Any villa' ? 'Garden Villa' : villa.value;
+    const [d, o] = RATES[name];
+    const key = n + name;
+    if (key === lastSum) return;
+    lastSum = key;
+    const paint = () => {
+      sum.querySelector('[data-sum="stay"]').textContent = n + (n === 1 ? ' night' : ' nights') + (villa.value === 'Any villa' ? ', from the Garden Villa' : ', ' + name);
+      sum.querySelector('[data-sum="total"]').textContent = idr(d * n) + ' booked direct';
+      sum.querySelector('[data-sum="save"]').textContent = 'You keep ' + idr((o - d) * n) + ' against the platforms';
+    };
+    if (sum.hidden) { paint(); sum.hidden = false; } else swap(sum, paint);
+  }
+
+  form.addEventListener('input', update); form.addEventListener('change', update); update();
+  document.querySelectorAll('[data-room]').forEach(a => a.addEventListener('click', () => { villa.value = a.dataset.room; update(); }));
+
+  // 2. The stay calculator under the rates table.
+  const calc = document.getElementById('calc');
+  if (calc) {
+    const range = calc.querySelector('#c-n'), nOut = calc.querySelector('#c-n-out'), out = calc.querySelector('.calc__out');
+    const cells = { direct: out.querySelector('[data-c="direct"]'), ota: out.querySelector('[data-c="ota"]'), save: out.querySelector('[data-c="save"]') };
+    const paintCalc = () => {
+      const [d, o] = RATES[NAMES[Number(calc.querySelector('input[name="c-villa"]:checked').value)]];
+      const n = Number(range.value);
+      cells.direct.textContent = idr(d * n); cells.ota.textContent = idr(o * n); cells.save.textContent = idr((o - d) * n);
+    };
+    const onCalc = (e) => {
+      const n = Number(range.value);
+      nOut.textContent = n + (n === 1 ? ' night' : ' nights');
+      range.setAttribute('aria-valuetext', nOut.textContent);
+      swap(out, paintCalc);
+    };
+    calc.addEventListener('input', onCalc); calc.addEventListener('change', onCalc);
+    calc.addEventListener('submit', (e) => e.preventDefault());
+    paintCalc();
+  }
+})();
+</script>
+</body>
+</html>

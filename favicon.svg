@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" fill="#b0491f" role="img" aria-label="Sawerna">
+  <!-- The Sawerna mark, redrawn from the client's logo: a Balinese gate with a frangipani in its crown and steps at its door. -->
+  <defs>
+    <mask id="cut" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="100">
+      <rect width="120" height="100" fill="#fff"/>
+      <path d="M47 89V57a13 13 0 0 1 26 0v32z" fill="#000"/>
+      <g transform="translate(60 24)" fill="#000">
+        <ellipse cx="0" cy="-6.2" rx="3.6" ry="6.2"/>
+        <ellipse cx="0" cy="-6.2" rx="3.6" ry="6.2" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-6.2" rx="3.6" ry="6.2" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-6.2" rx="3.6" ry="6.2" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-6.2" rx="3.6" ry="6.2" transform="rotate(288)"/>
+      </g>
+      <path d="M31 44c-5-1-7-7-2-8 3 0 5 2 8 5zM89 44c5-1 7-7 2-8-3 0-5 2-8 5z" fill="#000"/>
+    </mask>
+  </defs>
+  <g mask="url(#cut)">
+    <circle cx="60" cy="24" r="15.5"/>
+    <circle cx="46.5" cy="34" r="8.5"/>
+    <circle cx="73.5" cy="34" r="8.5"/>
+    <path d="M23 44c0-8 8-12 14-8l7 4v8H27c-3 0-4-2-4-4zM97 44c0-8-8-12-14-8l-7 4v8h16c3 0 4-2 4-4z"/>
+    <rect x="36" y="37" width="48" height="52" rx="3"/>
+    <rect x="23" y="62" width="19" height="27" rx="2"/>
+    <rect x="78" y="62" width="19" height="27" rx="2"/>
+    <rect x="13" y="78" width="94" height="11" rx="2.5"/>
+  </g>
+  <rect x="49" y="81" width="22" height="3.5" rx="1.75"/>
+  <rect x="43" y="88" width="34" height="4" rx="2"/>
+  <rect x="38" y="94.5" width="44" height="4" rx="2"/>
+</svg>

@@ -1,0 +1,8 @@
+.taste-skill/
+shots/
+names.json
+assets/photos/
+assets/objects/
+assets/scenes/
+Thumbs.db
+.DS_Store
