@@ -38,7 +38,8 @@
   --display-tracking: -0.02em;
 }
   /* the client's own logo files (assets/logo): the combined mark in the nav, the wordmark across the close */
-  :root { --logo: #ae4316; }
+  /* the mark in the site's own chocolate (the action colour), cream on the dark close: one palette throughout */
+  :root { --logo: var(--p-accent); }
   .nav__logo { display: inline-flex; align-items: center; color: var(--logo); }
   .nav__logo-svg { display: block; height: 30px; width: auto; }
   .close--word > .close__word { line-height: 0; }
@@ -58,7 +59,7 @@
   .hero--villa > .wrap > .hero-text { display: flex; flex-direction: column; gap: var(--s-6); height: 100%; }
   .hv-head { align-items: start; row-gap: var(--s-4); }
   .hv-head > h1 { margin: 0; text-box: trim-start cap alphabetic; }
-  .hv-head > .hero__lead { margin: 0; font-size: var(--t-lead); line-height: 1.5; max-width: none; text-align: justify; text-align-last: left; }
+  .hv-head > .hero__lead { margin: 0; font-size: var(--t-lead); line-height: 1.5; max-width: 46ch; text-wrap: pretty; }
   .hv-bar .field, .hv-bar :is(input, select) { min-width: 0; }
   .hv-stage { position: relative; flex: 1 1 0; min-height: 0; }
   .hv-media { position: absolute; inset: 0; margin: 0; border-radius: var(--r-lg); overflow: hidden; background: var(--surface); }
@@ -134,12 +135,6 @@
     #visit .visit__rows > li > :last-child { text-align: right; }
   }
   @media (min-width: 640px) and (max-width: 1023px) { .strip { margin-top: var(--s-8); } .strip img { aspect-ratio: 2 / 3; } #visit .pl-photo > img { aspect-ratio: 4 / 3; } #faq .pl-photo > img { aspect-ratio: 4 / 5; } }
-  /* a tall tablet (820x1180): taller pictures, so each screen is as full as on the others */
-  @media (min-width: 640px) and (max-width: 1023px) and (min-height: 1100px) {
-    #visit .pl-photo > img { aspect-ratio: 6 / 5; }
-    #rooms .tile { --tile-ratio: 2 / 3; }
-    .strip img { aspect-ratio: 1 / 2; }
-  }
   /* the booking bar's live summary: nights, the direct total and what it saves, once both dates are in */
   .hv-bar > .hv-sum { grid-column: 1 / -1; margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-1) var(--s-4); padding-top: var(--s-3); border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
   .hv-sum__total { font-weight: 500; }
@@ -190,6 +185,51 @@
   /* the name across the close, sized to the 1200 column */
   .close--word > .close__word { font-size: clamp(56px, 12vw, 170px); line-height: 1; padding-top: .04em; }
   @media (max-width: 639px) { .close--word > .close__word { font-size: 48px; } }
+
+  /* ---------------------------------------------------------------- tidy pass
+     The kit holds every section to exactly one screen. On this page that left wide empty grounds under the
+     short sections (location, villas, the close) and let the rates band run over the questions. Here every
+     section after the hero is as tall as what it holds, on one even rhythm per screen size. */
+  :root { --sec-y: 120px; }
+  @media (max-width: 1023px) { :root { --sec-y: 96px; } }
+  @media (max-width: 639px) { :root { --sec-y: 72px; } }
+  :root main > :is(section, .section):not(.hero, .section--hero),
+  :root footer.closing { display: block; height: auto; min-height: 0; padding: var(--sec-y) 0; }
+  :root main > :is(section, .section):not(.hero, .section--hero) > :is(.wrap, .container),
+  :root footer.closing > .wrap { height: auto; min-height: 0; }
+  :root footer.closing { padding-bottom: calc(var(--s-8) + var(--bar)); }
+  /* two sections on the same cream ground: one gap between them, not two */
+  :root main > #visit + #rooms { padding-top: 0; }
+
+  /* location: the card runs the photograph's full height, its distance rows on the card's foot */
+  @media (min-width: 1024px) {
+    #visit .grid--top { align-items: stretch; }
+    #visit .visit--card { display: flex; flex-direction: column; justify-content: space-between; gap: var(--s-6); }
+    #visit .pl-photo { --pl-r: 1.6 !important; }   /* a wider frame, so the card's words fill it */
+  }
+  /* the hero already ends on its own space: the first section under it opens a little closer */
+  :root main > .hero + .section { padding-top: calc(var(--sec-y) * .75); }
+
+  /* villas: the intro sits at the top of its column; each card's price and link share one line across the row */
+  #rooms > .wrap > .section-head { align-content: start; }
+  @media (min-width: 640px) {
+    #rooms .tile { display: flex; flex-direction: column; gap: var(--s-4); }
+    /* every photograph on the row's one ratio, whatever the file's own shape */
+    #rooms .tile > .tile__media { flex: none; min-height: 0; }
+    #rooms .tile > .tile__media > img { position: absolute; inset: 0; }
+    #rooms .tile > .tile__price { margin-top: auto; padding-top: var(--s-2); }
+  }
+  @media (min-width: 640px) and (max-width: 1023px) { #rooms .tile { --tile-ratio: 4 / 5; } }
+
+  /* the detail strip and the questions' photograph: calmer shapes below the desktop */
+  @media (min-width: 640px) and (max-width: 1023px) { .strip img { aspect-ratio: 4 / 5; } }
+  @media (max-width: 1023px) {
+    #faq .pl-photo { margin-top: var(--s-7); }
+    #faq .pl-photo > img { aspect-ratio: 3 / 2; object-position: 50% 55%; }
+  }
+
+  /* the close: the name follows the heading at a set distance rather than at the foot of a screen */
+  .close--word > .close__word { margin-top: var(--s-7); }
 </style>
 </head>
 <body>
@@ -295,7 +335,7 @@
             <li><span>To the beach</span><span data-assumed>A 10-minute walk</span></li>
           </ul>
         </div>
-        <figure class="pl-photo pl-photo--end span-6 start-7" style="--pl-r: 1; --pl-head: 72px" data-moment="picture-develops">
+        <figure class="pl-photo pl-photo--end span-6 start-7" style="--pl-r: 1.3333" data-moment="picture-develops">
           <img src="assets/img/pexels/pexels-5289209.jpg" srcset="assets/img/pexels/pexels-5289209.jpg 1600w" sizes="(max-width: 1023px) 100vw, 50vw" width="1600" height="1067" alt="Sunset on the beach at Canggu" loading="lazy" decoding="async" style="--pos: 40% 50%" data-source="pexels" data-subject="area">
         </figure>
       </div>
@@ -311,7 +351,7 @@
       <a class="tile span-3" href="#book" data-room="Garden Villa">
         <div class="tile__media"><img src="assets/img/pexels/pexels-1103808.jpg" srcset="assets/img/pexels/pexels-1103808.jpg 1600w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 70vw, 40vw" width="1600" height="2133" alt="Garden Villa: a bedroom looking out over a green garden" loading="lazy" decoding="async" style="object-position: 40% 50%" data-source="pexels" data-subject="room"></div>
         <div class="tile__head"><h3>Garden Villa</h3></div>
-        <p class="tile__facts" data-assumed>2 guests · 42 m² · garden terrace</p>
+        <p class="tile__facts" data-assumed>2&nbsp;guests&nbsp;· 42&nbsp;m²&nbsp;· garden&nbsp;terrace</p>
         <p data-assumed>A bedroom and a covered terrace on the garden, with an outdoor rain shower.</p>
         <p class="tile__price">From <span data-assumed>IDR 2,380,000</span></p>
         <span class="room-link">Book this villa<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span>
@@ -319,7 +359,7 @@
       <a class="tile span-3" href="#book" data-room="Pool Villa">
         <div class="tile__media"><img src="assets/img/pexels/pexels-36418268.jpg" srcset="assets/img/pexels/pexels-36418268.jpg 1600w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 70vw, 40vw" width="1600" height="1067" alt="Pool Villa: a private pool surrounded by tropical planting" loading="lazy" decoding="async" data-source="pexels" data-subject="room"></div>
         <div class="tile__head"><h3>Pool Villa</h3></div>
-        <p class="tile__facts" data-assumed>2 guests · 1 bedroom · 8 m pool</p>
+        <p class="tile__facts" data-assumed>2&nbsp;guests&nbsp;· 1&nbsp;bedroom&nbsp;· 8&nbsp;m&nbsp;pool</p>
         <p data-assumed>One bedroom that opens straight onto its own pool and a shaded daybed.</p>
         <p class="tile__price">From <span data-assumed>IDR 3,960,000</span></p>
         <span class="room-link">Book this villa<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span>
@@ -327,7 +367,7 @@
       <a class="tile span-3" href="#book" data-room="Two-Bedroom Villa">
         <div class="tile__media"><img src="assets/img/pexels/pexels-28256945.jpg" srcset="assets/img/pexels/pexels-28256945.jpg 1600w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 70vw, 40vw" width="1600" height="2400" alt="Two-Bedroom Villa: a living room under a timber ceiling" loading="lazy" decoding="async" data-source="pexels" data-subject="room"></div>
         <div class="tile__head"><h3>Two-Bedroom Villa</h3></div>
-        <p class="tile__facts" data-assumed>4 guests · 2 bedrooms · 10 m pool</p>
+        <p class="tile__facts" data-assumed>4&nbsp;guests&nbsp;· 2&nbsp;bedrooms&nbsp;· 10&nbsp;m&nbsp;pool</p>
         <p data-assumed>Two bedrooms either side of a living room, a kitchen and a pool for four.</p>
         <p class="tile__price">From <span data-assumed>IDR 6,240,000</span></p>
         <span class="room-link">Book this villa<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span>
